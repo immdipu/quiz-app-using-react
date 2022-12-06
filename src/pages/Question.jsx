@@ -28,28 +28,29 @@ const Question = () => {
   }
 
   const checkAnswer = (e) => {
-    if (currIndex == questions.length - 1) {
+    let clickedAnswer = e.target.dataset.answer;
+    let correctAnswer = currques.correct_answer;
+    if (clickedAnswer === correctAnswer) {
+      e.target.classList.add("correct");
+      setcorrectAns((prev) => {
+        return prev + 1;
+      });
+      setTimeout(function () {
+        e.target.classList.remove("correct");
+        if (currIndex !== questions.length - 1) {
+          nextHandle();
+        }
+      }, 400);
     } else {
-      let clickedAnswer = e.target.dataset.answer;
-      let correctAnswer = currques.correct_answer;
-      if (clickedAnswer === correctAnswer) {
-        e.target.classList.add("correct");
-        setcorrectAns((prev) => {
-          return prev + 1;
-        });
-        setTimeout(function () {
-          e.target.classList.remove("correct");
+      setAlert(true);
+      e.target.classList.add("incorrect");
+      setTimeout(function () {
+        e.target.classList.remove("incorrect");
+        if (currIndex !== questions.length - 1) {
           nextHandle();
-        }, 400);
-      } else {
-        setAlert(true);
-        e.target.classList.add("incorrect");
-        setTimeout(function () {
-          e.target.classList.remove("incorrect");
-          nextHandle();
-          setAlert(false);
-        }, 1500);
-      }
+        }
+        setAlert(false);
+      }, 1500);
     }
   };
 
@@ -72,7 +73,7 @@ const Question = () => {
   };
 
   return (
-    <div className="w-full max-w-[60rem] m-auto mt-10 bg-[#ffffff] px-12 py-9">
+    <div className="w-full max-w-[60rem] m-auto mt-10 bg-[#ffffff] px-12 py-9 shadow-md">
       {Alert && (
         <h1
           dangerouslySetInnerHTML={{
@@ -87,7 +88,7 @@ const Question = () => {
         </h3>
         <p className="text-lg font-normal text-zinc-800">{questions.length}</p>
       </div>
-      <div className="flex text-[#77d57f] w-full justify-end gap-2 items-center mb-5">
+      <div className="flex text-[#77d57f] w-full justify-end gap-2 items-center mb-5 max-sm:text-base">
         <h3 className="text-xl font-semibold">Correct Answers :</h3>
         <p className="tracking-[4px] text-lg font-normal">
           {correctAns}/{currIndex}
@@ -96,9 +97,9 @@ const Question = () => {
 
       <h1
         dangerouslySetInnerHTML={{ __html: currques.question }}
-        className="text-[2.7vw] text-[#102a42] text-center font-bold leading-[37px]"
+        className="text-[2.7vw] text-[#102a42] text-center font-bold leading-[37px] max-sm:leading-[20px]"
       />
-      <ul className="w-full m-auto flex flex-col items-center gap-3 mt-7">
+      <ul className="w-full m-auto flex flex-col items-center gap-3 mt-7 max-sm:overflow-hidden">
         {randomAnswers().map((item, i) => {
           return (
             <li
@@ -106,7 +107,7 @@ const Question = () => {
               data-answer={item}
               dangerouslySetInnerHTML={{ __html: item }}
               onClick={checkAnswer}
-              className="bg-[#8bcbf9] min-w-[30rem] text-2xl tracking-wider rounded-[4px] px-2 py-1 text-center hover:bg-[#49a6e9] hover:text-white transition-all duration-200 ease-linear cursor-pointer"
+              className="bg-[#8bcbf9] min-w-[30rem] text-2xl tracking-wider rounded-[4px] px-2 py-1 text-center hover:bg-[#49a6e9] hover:text-white transition-all duration-200 ease-linear cursor-pointer max-sm:text-base max-sm:w-fit"
             />
           );
         })}

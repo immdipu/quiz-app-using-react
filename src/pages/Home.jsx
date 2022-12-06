@@ -47,7 +47,7 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full max-w-[35rem] m-auto mt-14 bg-[#ffffff] px-12 py-12">
+    <div className="w-full max-w-[35rem] m-auto mt-8 bg-[#ffffff] px-12 py-12">
       <h1 className="text-[#102a42] text-4xl font-extrabold tracking-wide text-">
         Setup Quiz
       </h1>
