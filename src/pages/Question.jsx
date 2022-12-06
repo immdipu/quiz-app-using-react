@@ -54,7 +54,6 @@ const Question = () => {
   const randomAnswers = () => {
     for (let i = 0; i < 4; i++) {
       let randomIndex = Math.floor(Math.random() * 4);
-      console.log(randomIndex);
       let temp = "";
       let currentAnswer = answer[i];
       let randomAnswer = answer[randomIndex];
