@@ -7,3 +7,23 @@ body {
     font-family: 'JetBrains Mono', monospace;
     font-family: 'Mulish', sans-serif;
 }
+
+.correct {
+    background-color: #59b759 !important;
+    color: white;
+    transition: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+.incorrect {
+    background-color: #f54242;
+    color: white;
+    transition: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+.incorrect:hover {
+    background-color: red !important;
+}
