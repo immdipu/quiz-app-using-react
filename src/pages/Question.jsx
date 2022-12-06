@@ -65,7 +65,7 @@ const Question = () => {
     return answer;
   };
   return (
-    <div className="w-full max-w-[60rem] m-auto mt-14 bg-[#ffffff] px-12 py-12">
+    <div className="w-full max-w-[60rem] m-auto mt-10 bg-[#ffffff] px-12 py-9">
       {Alert && (
         <h1
           dangerouslySetInnerHTML={{
@@ -89,7 +89,7 @@ const Question = () => {
 
       <h1
         dangerouslySetInnerHTML={{ __html: currques.question }}
-        className="text-[2.7vw] text-[#102a42] text-center font-bold"
+        className="text-[2.7vw] text-[#102a42] text-center font-bold leading-[37px]"
       />
       <ul className="w-full m-auto flex flex-col items-center gap-3 mt-7">
         {randomAnswers().map((item, i) => {
