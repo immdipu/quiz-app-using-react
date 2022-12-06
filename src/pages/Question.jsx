@@ -105,7 +105,7 @@ const Question = () => {
       </ul>
       <div className="w-full flex justify-end mt-8">
         <button
-          onClick={() => nextHandle}
+          onClick={nextHandle}
           className="bg-[#facc15] border-2 border-[#facc15]  rounded-[4px] text-xl font-semibold tracking-wider h-10 mt-5 hover:bg-white transition-all duration-300 ease-linear hover:border-gray-900 px-5"
         >
           Next Question
