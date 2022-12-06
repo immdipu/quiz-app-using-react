@@ -1,6 +1,4 @@
-
 import Home from "./pages/Home";
-import Modal from "./pages/Modal";
 import Question from "./pages/Question";
 import { useGlobalContext } from "./context";
 
@@ -10,6 +8,7 @@ function App() {
   return (
     <div className="App">
       {Homes ? <Home /> : <Question />}
+
     </div>
   );
 }
