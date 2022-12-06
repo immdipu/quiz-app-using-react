@@ -42,8 +42,8 @@ const Home = () => {
         ];
         return [...temp];
       });
+      setHome(false);
     }
-    setHome(false);
   };
 
   return (
@@ -62,6 +62,7 @@ const Home = () => {
           <input
             id="inputnum"
             type="number"
+            defaultValue={10}
             min={1}
             max={50}
             ref={inputVal}

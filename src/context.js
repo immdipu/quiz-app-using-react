@@ -65,11 +65,6 @@ const AppProvider = ({ children }) => {
 
 
 
-
-
-
-
-
     return (
         <AppContext.Provider value={{ currentval, Homes, setCurrentVal, setHome, questions, currIndex, currques, setCurrques, setIndex, nextHandle }}>{children}</AppContext.Provider>
     )
