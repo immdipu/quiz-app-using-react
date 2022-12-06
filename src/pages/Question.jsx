@@ -28,25 +28,28 @@ const Question = () => {
   }
 
   const checkAnswer = (e) => {
-    let clickedAnswer = e.target.dataset.answer;
-    let correctAnswer = currques.correct_answer;
-    if (clickedAnswer === correctAnswer) {
-      e.target.classList.add("correct");
-      setcorrectAns((prev) => {
-        return prev + 1;
-      });
-      setTimeout(function () {
-        e.target.classList.remove("correct");
-        nextHandle();
-      }, 400);
+    if (currIndex == questions.length - 1) {
     } else {
-      setAlert(true);
-      e.target.classList.add("incorrect");
-      setTimeout(function () {
-        e.target.classList.remove("incorrect");
-        nextHandle();
-        setAlert(false);
-      }, 1500);
+      let clickedAnswer = e.target.dataset.answer;
+      let correctAnswer = currques.correct_answer;
+      if (clickedAnswer === correctAnswer) {
+        e.target.classList.add("correct");
+        setcorrectAns((prev) => {
+          return prev + 1;
+        });
+        setTimeout(function () {
+          e.target.classList.remove("correct");
+          nextHandle();
+        }, 400);
+      } else {
+        setAlert(true);
+        e.target.classList.add("incorrect");
+        setTimeout(function () {
+          e.target.classList.remove("incorrect");
+          nextHandle();
+          setAlert(false);
+        }, 1500);
+      }
     }
   };
 
@@ -63,6 +66,11 @@ const Question = () => {
     }
     return answer;
   };
+
+  const opnenmodel = () => {
+    console.log("hello");
+  };
+
   return (
     <div className="w-full max-w-[60rem] m-auto mt-10 bg-[#ffffff] px-12 py-9">
       {Alert && (
@@ -105,7 +113,7 @@ const Question = () => {
       </ul>
       <div className="w-full flex justify-end mt-8">
         <button
-          onClick={nextHandle}
+          onClick={currIndex !== questions.length - 1 ? nextHandle : opnenmodel}
           className="bg-[#facc15] border-2 border-[#facc15]  rounded-[4px] text-xl font-semibold tracking-wider h-10 mt-5 hover:bg-white transition-all duration-300 ease-linear hover:border-gray-900 px-5"
         >
           Next Question
