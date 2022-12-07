@@ -97,25 +97,27 @@ const Question = () => {
 
       <h1
         dangerouslySetInnerHTML={{ __html: currques.question }}
-        className="text-[2.7vw] text-[#102a42] text-center font-bold leading-[37px] max-sm:leading-[20px]"
+        className="max-sm:text-[4.5vw] text-[2.7vw] text-[#102a42] text-center font-bold leading-[1.2] max-sm:leading-[1.3]"
       />
-      <ul className="w-full m-auto flex flex-col items-center gap-3 mt-7 max-sm:overflow-hidden">
+      <div className="w-full m-auto flex flex-col items-center gap-3 mt-7 max-sm:overflow-hidden max-sm:gap-4">
         {randomAnswers().map((item, i) => {
           return (
-            <li
+            <p
               key={i}
               data-answer={item}
-              dangerouslySetInnerHTML={{ __html: item }}
+              dangerouslySetInnerHTML={{
+                __html: `${item}`,
+              }}
               onClick={checkAnswer}
-              className="bg-[#8bcbf9] min-w-[30rem] text-2xl tracking-wider rounded-[4px] px-2 py-1 text-center hover:bg-[#49a6e9] hover:text-white transition-all duration-200 ease-linear cursor-pointer max-sm:text-base max-sm:w-fit"
+              className="bg-[#8bcbf9] min-w-[30rem] text-2xl tracking-wider rounded-[4px] px-2 py-1 text-center hover:bg-[#49a6e9] hover:text-white transition-all duration-200 ease-linear cursor-pointer max-sm:w-full max-sm:text-base max-sm:min-w-0 max-sm:text-[4.2vw] max-sm:px-4"
             />
           );
         })}
-      </ul>
+      </div>
       <div className="w-full flex justify-end mt-8">
         <button
           onClick={currIndex !== questions.length - 1 ? nextHandle : opnenmodel}
-          className="bg-[#facc15] border-2 border-[#facc15]  rounded-[4px] text-xl font-semibold tracking-wider h-10 mt-5 hover:bg-white transition-all duration-300 ease-linear hover:border-gray-900 px-5"
+          className="bg-[#facc15] border-2 border-[#facc15]  rounded-[4px] text-xl font-semibold tracking-wider h-10 mt-5 hover:bg-white transition-all duration-300 ease-linear hover:border-gray-900 px-5 max-sm:text-[4.2vw] max-sm:px-3"
         >
           Next Question
         </button>
