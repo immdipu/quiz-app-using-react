@@ -1,15 +1,19 @@
+
 import Home from "./pages/Home";
 import Question from "./pages/Question";
 import { useGlobalContext } from "./context";
+import Modal from "./pages/Modal";
 
 
 function App() {
-  const { Homes } = useGlobalContext();
+  const { Homes, modal } = useGlobalContext();
+
   return (
-    <div className="App">
+    <>
+      {modal && <Modal />}
       {Homes ? <Home /> : <Question />}
-      <h3 className="bg-white absolute w-full text-center shadow-lg text-zinc-500 bottom-0">Made by Dipu</h3>
-    </div>
+      <h3 className="bg-white fixed w-full text-center hover:scale-[1.2] transition-all duration-300 ease-linear shadow-lg text-zinc-500 bottom-0"> <a href="https://github.com/immdipu" rel="noreferrer" target="_blank">Made by Dipu</a></h3>
+    </>
   );
 }
 

@@ -15,6 +15,8 @@ const AppProvider = ({ children }) => {
     const [questions, setQuestions] = useState([]);
     const [currIndex, setIndex] = useState(0);
     const [currques, setCurrques] = useState([]);
+    const [correctAns, setcorrectAns] = useState(0);
+    const [modal, setModal] = useState(false)
 
 
     useEffect(() => {
@@ -62,11 +64,8 @@ const AppProvider = ({ children }) => {
 
 
 
-
-
-
     return (
-        <AppContext.Provider value={{ currentval, Homes, setCurrentVal, setHome, questions, currIndex, currques, setCurrques, setIndex, nextHandle }}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{ currentval, Homes, setCurrentVal, setHome, questions, currIndex, currques, setCurrques, setIndex, nextHandle, correctAns, setcorrectAns, modal, setModal }}>{children}</AppContext.Provider>
     )
 }
 

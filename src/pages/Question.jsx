@@ -3,10 +3,17 @@ import { useGlobalContext } from "../context";
 import Loader from "../components/Loader";
 
 const Question = () => {
-  const { questions, currques, setCurrques, currIndex, nextHandle } =
-    useGlobalContext();
+  const {
+    questions,
+    currques,
+    setCurrques,
+    currIndex,
+    nextHandle,
+    correctAns,
+    setcorrectAns,
+    setModal,
+  } = useGlobalContext();
   const [loading, setLoading] = useState(true);
-  const [correctAns, setcorrectAns] = useState(0);
   const [Alert, setAlert] = useState(false);
 
   useEffect(() => {
@@ -37,19 +44,35 @@ const Question = () => {
       });
       setTimeout(function () {
         e.target.classList.remove("correct");
+
         if (currIndex !== questions.length - 1) {
           nextHandle();
+          document.querySelectorAll(".lists").forEach((item) => {
+            item.classList.remove("disabelPointer");
+          });
         }
-      }, 400);
+      }, 800);
     } else {
       setAlert(true);
       e.target.classList.add("incorrect");
       setTimeout(function () {
         e.target.classList.remove("incorrect");
+
         if (currIndex !== questions.length - 1) {
           nextHandle();
+          document.querySelectorAll(".lists").forEach((item) => {
+            item.classList.remove("disabelPointer");
+          });
         }
         setAlert(false);
+      }, 1500);
+    }
+    document.querySelectorAll(".lists").forEach((item) => {
+      item.classList.add("disabelPointer");
+    });
+    if (currIndex === questions.length - 1) {
+      setTimeout(function () {
+        setModal(true);
       }, 1500);
     }
   };
@@ -66,10 +89,6 @@ const Question = () => {
       answer[randomIndex] = temp;
     }
     return answer;
-  };
-
-  const opnenmodel = () => {
-    console.log("hello");
   };
 
   return (
@@ -109,15 +128,17 @@ const Question = () => {
                 __html: `${item}`,
               }}
               onClick={checkAnswer}
-              className="bg-[#8bcbf9] min-w-[30rem] text-2xl tracking-wider rounded-[4px] px-2 py-1 text-center hover:bg-[#49a6e9] hover:text-white transition-all duration-200 ease-linear cursor-pointer max-sm:w-full max-sm:text-base max-sm:min-w-0 max-sm:text-[4.2vw] max-sm:px-4"
+              className="bg-[#8bcbf9] lists min-w-[30rem] text-2xl tracking-wider rounded-[4px] px-2 py-1 text-center hover:bg-[#49a6e9] hover:text-white transition-all duration-200 ease-linear cursor-pointer max-sm:w-full max-sm:text-base max-sm:min-w-0 max-sm:text-[4.2vw] max-sm:px-4"
             />
           );
         })}
       </div>
       <div className="w-full flex justify-end mt-8">
         <button
-          onClick={currIndex !== questions.length - 1 ? nextHandle : opnenmodel}
-          className="bg-[#facc15] border-2 border-[#facc15]  rounded-[4px] text-xl font-semibold tracking-wider h-10 mt-5 hover:bg-white transition-all duration-300 ease-linear hover:border-gray-900 px-5 max-sm:text-[4.2vw] max-sm:px-3"
+          onClick={nextHandle}
+          className={`${
+            currIndex !== questions.length - 1 ? "block" : "hidden"
+          } border-2 border-transparent rounded-[4px] bg-[#facc15] text-xl font-semibold tracking-wider h-10 mt-5 hover:bg-white transition-all duration-300 ease-linear hover:border-gray-900 px-5 max-sm:text-[4.2vw] max-sm:px-3`}
         >
           Next Question
         </button>
