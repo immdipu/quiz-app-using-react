@@ -43,7 +43,7 @@ const Modal = () => {
             {welcomeText(CorrerctAnswerPerc())}
           </h1>
           <p className="text-center text-[#324d67] font-medium text-xl max-sm:text-lg">
-            You answered {CorrerctAnswerPerc()}% of questions correctly
+            You answered {CorrerctAnswerPerc()}% of questions correctly.
           </p>
           <button
             onClick={opnenmodel}

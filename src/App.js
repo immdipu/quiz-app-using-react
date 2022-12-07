@@ -12,7 +12,7 @@ function App() {
     <>
       {modal && <Modal />}
       {Homes ? <Home /> : <Question />}
-      <h3 className="bg-white fixed w-full text-center hover:scale-[1.2] transition-all duration-300 ease-linear shadow-lg text-zinc-500 bottom-0"> <a href="https://github.com/immdipu" rel="noreferrer" target="_blank">Made by Dipu</a></h3>
+      <h3 className="bg-white fixed w-full text-center hover:animate-ping-slow shadow-lg text-zinc-500 bottom-0"> <a href="https://github.com/immdipu" rel="noreferrer" target="_blank">Made by Dipu</a></h3>
     </>
   );
 }
