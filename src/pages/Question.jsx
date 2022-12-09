@@ -84,23 +84,23 @@ const Question = () => {
   };
 
   return (
-    <div className="w-full max-w-[60rem] m-auto mt-10 bg-[#ffffff] px-12 py-9 shadow-md">
+    <div className="w-full max-w-[60rem] m-auto mt-10 bg-[#ffffff] px-12 py-9 shadow-md relative">
       {Alert && (
         <h1
           dangerouslySetInnerHTML={{
             __html: `The correct answer is ${currques.correct_answer}`,
           }}
-          className="text-xl text-[#102a42] bg-green-300 text-center font-medium rounded-md"
+          className="text-xl text-[#102a42] bg-green-300 text-center font-medium rounded-md absolute top-2 left-0 right-0 mx-5"
         />
       )}
-      <div className="flex text-[#77d57f] w-full justify-end gap-1 items-center mb-1">
+      <div className="flex text-[#77d57f] w-full justify-end gap-1 mt-2 items-center">
         <h3 className="text-lg font-semibold text-zinc-700">
           Total Questions :
         </h3>
         <p className="text-lg font-normal text-zinc-800">{questions.length}</p>
       </div>
       <div className="flex text-[#77d57f] w-full justify-end gap-2 items-center mb-5 max-sm:text-base">
-        <h3 className="text-xl font-semibold">Correct Answers :</h3>
+        <h3 className="text-lg font-semibold">Correct Answers :</h3>
         <p className="tracking-[4px] text-lg font-normal">
           {correctAns}/{currIndex}
         </p>
