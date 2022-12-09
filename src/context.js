@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 
 
 const AppContext = React.createContext();
@@ -63,7 +63,7 @@ const AppProvider = ({ children }) => {
 
 
 
-    const randomiseAns = (answer) => {
+    const randomiseAns = useCallback((answer) => {
         for (let i = 0; i < 4; i++) {
             let randomIndex = Math.floor(Math.random() * 4);
             let temp = "";
@@ -74,7 +74,7 @@ const AppProvider = ({ children }) => {
             answer[randomIndex] = temp;
         }
         return answer;
-    };
+    }, []);
 
 
 
