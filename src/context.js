@@ -63,9 +63,24 @@ const AppProvider = ({ children }) => {
 
 
 
+    const randomiseAns = (answer) => {
+        for (let i = 0; i < 4; i++) {
+            let randomIndex = Math.floor(Math.random() * 4);
+            let temp = "";
+            let currentAnswer = answer[i];
+            let randomAnswer = answer[randomIndex];
+            temp = currentAnswer;
+            answer[i] = randomAnswer;
+            answer[randomIndex] = temp;
+        }
+        return answer;
+    };
+
+
+
 
     return (
-        <AppContext.Provider value={{ currentval, Homes, setCurrentVal, setHome, questions, currIndex, currques, setCurrques, setIndex, nextHandle, correctAns, setcorrectAns, modal, setModal }}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{ currentval, Homes, setCurrentVal, setHome, questions, currIndex, currques, setCurrques, setIndex, nextHandle, correctAns, setcorrectAns, modal, setModal, randomiseAns }}>{children}</AppContext.Provider>
     )
 }
 

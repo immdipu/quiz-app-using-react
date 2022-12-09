@@ -12,6 +12,7 @@ const Question = () => {
     correctAns,
     setcorrectAns,
     setModal,
+    randomiseAns,
   } = useGlobalContext();
   const [loading, setLoading] = useState(true);
   const [Alert, setAlert] = useState(false);
@@ -21,7 +22,12 @@ const Question = () => {
       let ques = questions[currIndex];
       if (ques !== undefined) {
         setLoading(false);
-        return ques;
+        const allAnswers = randomiseAns([
+          ...ques.incorrect_answers,
+          ques.correct_answer,
+        ]);
+
+        return { ...ques, RandomizedAns: allAnswers };
       }
     });
   }, [setCurrques, questions, currIndex]);
@@ -77,20 +83,6 @@ const Question = () => {
     }
   };
 
-  const answer = [...currques.incorrect_answers, currques.correct_answer];
-  const randomAnswers = () => {
-    for (let i = 0; i < 4; i++) {
-      let randomIndex = Math.floor(Math.random() * 4);
-      let temp = "";
-      let currentAnswer = answer[i];
-      let randomAnswer = answer[randomIndex];
-      temp = currentAnswer;
-      answer[i] = randomAnswer;
-      answer[randomIndex] = temp;
-    }
-    return answer;
-  };
-
   return (
     <div className="w-full max-w-[60rem] m-auto mt-10 bg-[#ffffff] px-12 py-9 shadow-md">
       {Alert && (
@@ -119,7 +111,7 @@ const Question = () => {
         className="max-sm:text-[4.5vw] text-[2.7vw] text-[#102a42] text-center font-bold leading-[1.2] max-sm:leading-[1.3]"
       />
       <div className="w-full m-auto flex flex-col items-center gap-3 mt-7 max-sm:overflow-hidden max-sm:gap-4">
-        {randomAnswers().map((item, i) => {
+        {currques.RandomizedAns.map((item, i) => {
           return (
             <p
               key={i}
