@@ -15,7 +15,7 @@ const Question = () => {
     randomiseAns,
   } = useGlobalContext();
   const [loading, setLoading] = useState(true);
-  const [Alert, setAlert] = useState(true);
+  const [Alert, setAlert] = useState(false);
 
   useEffect(() => {
     setCurrques(() => {
