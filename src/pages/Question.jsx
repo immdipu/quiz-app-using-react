@@ -101,8 +101,8 @@ const Question = () => {
       </div>
       <div className="flex text-[#77d57f] w-full justify-end gap-2 items-center mb-5 max-sm:text-base">
         <h3 className="text-lg font-semibold">Correct Answers :</h3>
-        <p className="tracking-[4px] text-lg font-normal">
-          {correctAns}/{currIndex}
+        <p className="tracking-[1px] text-lg font-normal">
+          {correctAns} / {currIndex}
         </p>
       </div>
 
